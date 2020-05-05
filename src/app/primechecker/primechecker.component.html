@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="form-group">
+    <label for="numberToCheck">Number to check:</label>
+    <input type="text" class="form-control" id="numberToCheck" required [formControl]="inputNumber" [ngClass]="{ 'is-invalid': submitted && inputNumber.errors }">
+    <div *ngIf="submitted && inputNumber.errors" class="text-danger">Number value which greater than 1 must be given!</div>
+  </div>
+  <div>
+    <button (click)="sendNumber()">Check</button>
+  </div>
+  <div *ngIf="responseMessage != null" [ngClass]="{'alert-success':responseMessage.prime, 'alert-danger':!responseMessage.prime }" class="text-break">
+     The given number: {{this.inputNumber.value}} {{responseMessage.prime ? 'is' : 'is not' }} prime number. The following prime number is {{responseMessage.nextPrime}}
+  </div>
+</div>
